@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.security.*;
@@ -15,6 +16,7 @@ import java.io.*;
 public class MainActivity extends AppCompatActivity {
 
     String message;
+    TextView finalmsg;
     public static String asHex(byte buf[]) {
         StringBuffer strbuf = new StringBuffer(buf.length * 2);
         int i;
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        finalmsg = (TextView) findViewById(R.id.textView2);
         Button submit=(Button) findViewById(R.id.button);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,9 +101,10 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 String originalString = new String(original);
-
+                finalmsg.setText("encrypted string: " + asHex(encrypted) +"\n"+"Original string: " +
+                        originalString + " " + asHex(original));
                 Toast.makeText(getApplicationContext(),"encrypted string: " + asHex(encrypted) +"\n"+"Original string: " +
-                        originalString + " " + asHex(original) , Toast.LENGTH_SHORT).show();
+                        originalString + " " + asHex(original) , Toast.LENGTH_LONG).show();
             }
         });
 

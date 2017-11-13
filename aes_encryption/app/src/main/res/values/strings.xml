@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">aes_encryption</string>
+    <string name="app_name">COMPUTER SECURITY KEL 5</string>
+    <string name="button">Encrypt</string>
+    <string name="label">AES Encryption Symmetric</string>
 </resources>
